@@ -1,0 +1,17 @@
+name = "PALINDROME"
+
+description =  """
+Read Ch:1 values from Ch:0
+Check if these values form a palindrome
+If they do, output 1 to Ch:2
+else output 0 to Ch:2 
+"""
+
+short_description = "CHECK IF A SEQUENCE IS A PALINDROME"
+
+hardware = []
+
+input_channels = [0, 1]
+output_channels = [2]
+
+section = "TUTORIAL"

@@ -1,0 +1,41 @@
+SET A, 0 ; world hardware: 0
+SET B, 0 ; mode: fetch vram address
+HWI 3 ; query inspector. C returns vram map
+SET [baseaddr], C
+
+IFE [baseaddr], 0
+SET PC, fault
+
+; LOOP OVER [0, hellolen]
+SET I, 0
+
+:loopstart
+
+SET A, 1 ; world hardware: 1
+SET B, I ; B is memory address
+ADD B, [baseaddr]
+HWI 3 ; C contains the value
+
+AND C, 0b1111111 ; take the bottom 7 bits
+
+IFN C, [I + helloworld] ; not the correct character
+SET PC, fault
+
+ADD I, 1
+IFL I, [hellolen]
+SET PC, loopstart
+
+;fallthrough, success!
+SND 0, 0
+
+:fault
+BRK
+
+:hellolen
+.DAT 12
+
+:helloworld
+.DAT "Hello World!"
+
+:baseaddr
+.DAT 0

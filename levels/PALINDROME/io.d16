@@ -1,0 +1,19 @@
+SET J, 32
+
+HWI 0
+MOD X, 31
+AND X, 0xfffe ; make sure number is even
+ADD X, 1
+
+SET [len], X
+
+ADD I, 1
+
+IFN I, J
+SET PC, 0
+
+:hold
+SET PC, hold
+
+:len
+DAT 0

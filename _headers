@@ -1,0 +1,6 @@
+#response_storage.set("Cross-Origin-Embedder-Policy", "require-corp");
+#response_storage.set("Cross-Origin-Opener-Policy", "same-origin");
+
+https://dcpu16.pages.dev/*
+	Cross-Origin-Embedder-Policy : require-corp
+	Cross-Origin-Opener-Policy : same-origin
